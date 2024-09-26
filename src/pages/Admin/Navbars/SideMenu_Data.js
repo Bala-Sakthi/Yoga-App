@@ -1,7 +1,13 @@
 import * as Yup from 'yup';
+import {
+  MdAdminPanelSettings,
+} from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
+import { IoGiftSharp } from 'react-icons/io5';
 
+// Validation schema for coupons
 export const CouponSchema = Yup.object().shape({
-  limit: Yup.number().required('Limit  is required'),
+  limit: Yup.number().required('Limit is required'),
   code: Yup.string().required('Code is required'),
   value: Yup.string().required('Value is required'),
   description: Yup.string().required('Description is required'),
@@ -9,16 +15,11 @@ export const CouponSchema = Yup.object().shape({
   endDate: Yup.string().required('End Date required'),
 });
 
-import {
-  MdAdminPanelSettings,
-} from 'react-icons/md';
-import {FaUser } from 'react-icons/fa';
-import { IoGiftSharp } from 'react-icons/io5';
-
+// Sidebar items definition
 export const sidebarItems = [
   {
     id: 1,
-    label: ' Dashboard',
+    label: 'Dashboard',
     parent_id: null,
     icon: <MdAdminPanelSettings size={20} />,
     module: 'dashboard',
@@ -43,6 +44,4 @@ export const sidebarItems = [
     order_index: 3,
     url: '/admin/coupon',
   },
-
-
 ];

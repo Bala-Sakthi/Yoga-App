@@ -121,14 +121,14 @@ export default function Router() {
         </AuthGuard>
       ),
       children: [
-        {
-          path: '/admin/user-list',
-          element: (
-            <AuthGuard>
-              <UserList />
-            </AuthGuard>
-          ),
-        },
+        // {
+        //   path: '/admin/user-list',
+        //   element: (
+        //     <AuthGuard>
+        //       <UserList />
+        //     </AuthGuard>
+        //   ),
+        // },
         {
           path: '/admin/dashboard',
           element: (
@@ -157,9 +157,7 @@ const NotFound = Loadable(lazy(() => import('../pages/404/Page404')));
 /* Admin routes */
 
 const Login = Loadable(lazy(() => import('../pages/Admin/LoginForms/Login')));
-const UserList = Loadable(
-  lazy(() => import('../pages/Admin/UserList/UserList'))
-);
+
 const Dashboard = Loadable(
   lazy(() => import('../pages/Admin/Dashboard/Dashboard'))
 );
