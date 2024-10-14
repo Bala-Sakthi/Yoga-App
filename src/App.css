@@ -1328,3 +1328,20 @@ button.close {
   margin: auto;
 }
 
+
+
+
+
+
+.form-control {
+  height: 50px; 
+  padding: 10px; 
+  font-size: 16px; 
+
+}
+
+.color-white {
+  color: white;
+}
+
+

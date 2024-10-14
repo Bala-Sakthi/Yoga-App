@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { Formik } from 'formik';
-import { LogAndRegSchema } from './LoginValidation';
-import TextInput from '../../../components/TextInput';
-import { useLoginUserMutation } from '../../../redux/api/AuthApi';
-import BasicButton from '../../../components/BasicButton';
-import login from '../../../assests/images/loginImage.svg';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Formik } from "formik";
+import { LogAndRegSchema } from "./LoginValidation";
+import { useLoginUserMutation } from "../../../redux/api/AuthApi";
+import BasicButton from "../../../components/BasicButton";
+import login from "../../../assests/images/loginimages.png";
+import loginImage from "../../../assests/images/smalllogo.png";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [passwordIcon, setPasswordIcon] = useState(false);
@@ -16,8 +16,8 @@ const Login = () => {
   const [loginApi, { isLoading }] = useLoginUserMutation();
 
   const initialValues = {
-    userName: '',
-    password: '',
+    userName: "",
+    password: "",
   };
 
   const showPassword = () => {
@@ -34,8 +34,7 @@ const Login = () => {
       });
       if (response?.data) {
         toast.success(response?.data?.message, { autoClose: 1000 });
-
-        history('/admin/dashboard');
+        history("/admin/dashboard");
       } else {
         toast.error(response?.error?.data.error, { autoClose: 1000 });
       }
@@ -47,8 +46,8 @@ const Login = () => {
   return (
     <Container
       fluid
-      className=" vh-100 w-100 d-flex flex-column justify-content-center align-items-center bg-white"
-      style={{ overflow: 'hidden' }}
+      className="vh-100 w-100 d-flex flex-column justify-content-center align-items-center bg-white"
+      style={{ overflow: "hidden" }}
     >
       <Row className="justify-content-center align-items-center">
         <Col
@@ -56,14 +55,14 @@ const Login = () => {
           md={6}
           lg={6}
           xl={6}
-          className="justify-content-center align-items-center "
+          className="justify-content-center align-items-center"
         >
           <img
             className="img-fluid d-none d-md-none d-sm-none d-lg-flex d-xl-flex d-xxl-flex d-lg-block ml-10 mt-md-4 justify-content-center align-items-center"
             src={login}
             alt="adminLoginImage"
             title="adminLoginImage"
-            style={{ height: '500px', width: '800px' }}
+            style={{ height: "500px", width: "800px" }}
           />
         </Col>
 
@@ -72,14 +71,46 @@ const Login = () => {
           md={12}
           lg={6}
           xl={6}
-          className="d-flex flex-column justify-content-center align-items-center "
+          className="d-flex flex-column justify-content-center align-items-center"
         >
-          <Row className="shadow p-4 bg-body rounded d-flex flex-column justify-content-center align-items-center">
-            <Col className="d-flex flex-column justify-content-center align-items-center">
-              <h5>Login</h5>
-              <p className="text-secondary text-noWarp">
-                Welcome back! Please enter your details
-              </p>
+          <Row
+            className="shadow p-5 d-flex flex-column justify-content-center align-items-center"
+            style={{ backgroundColor: "#718D74", borderRadius: "20px" }}
+          >
+            <Col className="d-flex flex-column justify-content-start align-items-start mt-3 mb-3">
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img
+                  className="rounded-circle"
+                  src={loginImage}
+                  alt="adminLoginImage"
+                  title="adminLoginImage"
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    objectFit: "cover",
+                    marginRight: "10px",
+                  }}
+                />
+                <div>
+                  <h4
+                    className="mt-3 mb-0 color-white"
+                    style={{ display: "inline-block" }}
+                  >
+                    YOGA NAME
+                  </h4>
+                  <div
+                    style={{
+                      borderBottom: "3px solid #ffffff",
+                      width: "80px",
+                      margin: "0 auto",
+                    }}
+                  ></div>
+                </div>
+              </div>
+
+              <h5 className="justify-content-start align-items-start mt-4 mb-2 color-white" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                Login
+              </h5>
             </Col>
             <Col>
               <Formik
@@ -105,76 +136,86 @@ const Login = () => {
                   >
                     <Row>
                       <Col xs={12}>
-                        <TextInput
-                          htmlFor="userName"
-                          label="Email/Phone Number"
+                        <Form.Label htmlFor="userName" className="text-white">
+                        Email/Phone Number<span className="color-white">*</span>
+                        </Form.Label>
+                        <Form.Control
                           name="userName"
-                          type="userName"
+                          type="text"
                           id="userName"
                           placeholder="Enter your Email/Phone Number"
                           className={`form-control ${
-                            touched.userName && errors.userName ? 'is-invalid' : ''
+                            touched.userName && errors.userName
+                              ? "is-invalid"
+                              : ""
                           }`}
+                          style={{
+                            backgroundColor: "#96AA97",
+                            border: "none",
+                            color: "#fff",
+                          }}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          validation={
-                            touched.userName && errors.userName ? (
-                              <p className="text-danger">{errors.userName}</p>
-                            ) : (
-                              ''
-                            )
-                          }
+                          aria-label="Email/Phone Number"
                         />
+                        {touched.userName && errors.userName ? (
+                          <p className="color-white">{errors.userName}</p>
+                        ) : null}
                       </Col>
                     </Row>
                     <Row className="mt-3">
                       <Col xs={12}>
-                        <Form.Label htmlFor="password">
-                          Password<span className="text-danger">*</span>
+                        <Form.Label htmlFor="password" className="text-white">
+                          Password<span className="color-white">*</span>
                         </Form.Label>
                       </Col>
-                    </Row>
-                    <Row className="d-flex flex-row justify-between align-items-center">
-                      <Col className="d-flex flex-row justify-content-end align-items-center">
-                        <Form.Control
-                          name="password"
-                          type={passwordIcon ? 'text' : 'password'}
-                          size="md"
-                          id="password"
-                          placeholder="Enter your password"
-                          className={`position-relative form-control ${
-                            touched.password && errors.password
-                              ? 'border-danger'
-                              : ''
-                          }`}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        <div
-                          className="position-absolute m-2 pointer"
-                          onClick={showPassword}
-                        >
-                          {passwordIcon ? (
-                            <AiOutlineEye />
-                          ) : (
-                            <AiOutlineEyeInvisible />
-                          )}
-                        </div>
-                      </Col>
+                      <Row className="d-flex flex-row justify-between align-items-center">
+                        <Col className="d-flex flex-row justify-content-end align-items-center">
+                          <Form.Control
+                            name="password"
+                            type={passwordIcon ? "text" : "password"}
+                            size="md"
+                            id="password"
+                            placeholder="Enter your password"
+                            className={`position-relative form-control ${
+                              touched.password && errors.password
+                                ? "border-danger"
+                                : ""
+                            }`}
+                            style={{
+                              backgroundColor: "#96AA97",
+                              border: "none",
+                              color: "#fff",
+                            }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            aria-label="Password"
+                          />
+                          <div
+                            className="position-absolute m-2 pointer"
+                            onClick={showPassword}
+                            aria-label="Toggle password visibility"
+                          >
+                            {passwordIcon ? (
+                              <AiOutlineEye />
+                            ) : (
+                              <AiOutlineEyeInvisible />
+                            )}
+                          </div>
+                        </Col>
+                      </Row>
                     </Row>
                     {touched.password && errors.password ? (
-                      <p className="text-danger">{errors.password}</p>
-                    ) : (
-                      ''
-                    )}
+                      <p className="color-white">{errors.password}</p>
+                    ) : null}
 
                     <BasicButton
                       className="mt-3"
-                      variant={'warning'}
+                      variant={"warning"}
                       type="submit"
                       disabled={isSubmitting}
                       isLoading={isLoading}
-                      label={'Login'}
+                      label={"Login"}
                     />
                   </Form>
                 )}

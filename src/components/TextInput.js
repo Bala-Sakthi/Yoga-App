@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+
 const TextInput = (props) => {
   const {
     label,
@@ -23,12 +24,21 @@ const TextInput = (props) => {
     star,
     ref,
     accept,
+    labelColor,
+    inputBgColor,
+    borderStyle,
+    placeholderColor, 
   } = props;
+
   return (
     <Form.Group>
-      <Form.Label htmlFor={htmlFor} className={lableClassName}>
+      <Form.Label
+        htmlFor={htmlFor}
+        className={lableClassName}
+        style={{ color: labelColor }}
+      >
         {label}
-        <span className={`text-danger ${star === 'none' ? `d-${star}` : ''}`}>
+        <span className={`color-white ${star === 'none' ? `d-${star}` : ''}`}>
           *
         </span>
       </Form.Label>
@@ -49,9 +59,20 @@ const TextInput = (props) => {
         sm={sm}
         ref={ref}
         accept={accept ?? ''}
+        style={{
+          backgroundColor: inputBgColor,
+          border: borderStyle || 'none',
+        }}
       />
+      {/* Add CSS for placeholder color */}
+      <style jsx>{`
+        input::placeholder {
+          color: ${placeholderColor || 'gray'}; 
+        }
+      `}</style>
       {validation}
     </Form.Group>
   );
 };
+
 export default TextInput;

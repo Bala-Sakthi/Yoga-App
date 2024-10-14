@@ -2,21 +2,21 @@ import React from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const ReactSidebar = ({ sidebarItems, onClick }) => {
   const location = useLocation();
 
   const renderMenuItems = (items) => {
     return items.map((item) => {
       const isActive = location.pathname === item.url;
+
       if (item.children && item.children.length > 0) {
         return (
           <SubMenu
             className='fs-15 text-bolder'
             active={isActive}
             rootStyles={{
-              backgroundColor: isActive ? 'white' : '#FFFFFF',
-              color:"black",
+              backgroundColor: '#FFFFFF', // Keep the background color unchanged
+              color: "black",
             }}
             key={item.id}
             title={item.label}
@@ -32,15 +32,17 @@ const ReactSidebar = ({ sidebarItems, onClick }) => {
             className='textDecoration-none color-white'
             to={item.url}
             style={{ textDecoration: 'none' }}
+            key={item.id}
           >
             <MenuItem
               onClick={onClick}
               className='fs-15 text-bolder'
               active={isActive}
               rootStyles={{
-                backgroundColor: isActive ? '#bcc3e6' : '#FFFFFF',
-                color: isActive ? 'black' : 'black',
-                width:"260px"
+                backgroundColor: isActive ? '#D9E0D9' : '#FFFFFF', // Background color for active state
+                color: isActive ? '#009D63' : 'black', // Active text color set to #009D63
+                border: isActive ? '2px solid black' : 'none', // Set border to black for active item
+                width: "260px"
               }}
               icon={item.icon}
             >
@@ -61,9 +63,12 @@ const ReactSidebar = ({ sidebarItems, onClick }) => {
           color: 'white',
           fontWeight: 'bolder',
           width: '100%',
-          height:"100%",
+          height: "100%",
         }}
       >
+        <div className="menu-title mt-3 mb-3" style={{ textAlign: 'center', marginBottom: '10px', color: "black", fontSize: "30px" }}>
+          YOGA
+        </div>
         <div className="menu-container">
           <Menu iconShape='circle'>{renderMenuItems(sidebarItems)}</Menu>
         </div>

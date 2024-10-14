@@ -1,9 +1,8 @@
-import React from 'react';
-import { Button, Spinner } from 'react-bootstrap';
-import { useTheme } from '../Contexts/ThemeContext';
+import React from "react";
+import { Button, Spinner } from "react-bootstrap";
 const BasicButton = (props) => {
-  const { color } = useTheme();
   const {
+    variant,
     onClick,
     label,
     size,
@@ -12,16 +11,17 @@ const BasicButton = (props) => {
     isLoading,
     loaderVariant,
     loaderSize,
-    type,
+    type
   } = props;
   const buttonStyle = {
-    backgroundColor: color,
-    borderColor: color,
-    color: 'white',
+    backgroundColor:"#003205",
+    borderColor: "#003205",
+    color:"white",
   };
   return (
     <Button
       style={buttonStyle}
+      variant={variant}
       className={className}
       size={size}
       type={type}
@@ -35,11 +35,9 @@ const BasicButton = (props) => {
       ) : (
         <>
           <Spinner
-            className="mx-1"
-            size={`${!loaderSize ? 'sm' : loaderSize}`}
-            variant={`${!loaderVariant ? color : loaderVariant}`}
+            size={`${!loaderSize ? "sm" : loaderSize}`}
+            variant={`${!loaderVariant ? "#003205" : loaderVariant}`}
           />
-          {label}...
         </>
       )}
     </Button>
