@@ -138,6 +138,14 @@ export default function Router() {
           ),
         },
     
+        {
+          path: '/admin/student-list',
+          element: (
+            <AuthGuard>
+              <StudentList />
+            </AuthGuard>
+          ),
+        },
       ],
     },
     {
@@ -160,6 +168,11 @@ const Login = Loadable(lazy(() => import('../pages/Admin/LoginForms/Login')));
 
 const Dashboard = Loadable(
   lazy(() => import('../pages/Admin/Dashboard/Dashboard'))
+);
+
+
+const StudentList = Loadable(
+  lazy(() => import('../pages/Admin/StudentList/StudentList'))
 );
 
 

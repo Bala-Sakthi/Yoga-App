@@ -3,7 +3,7 @@ import {
   MdAdminPanelSettings,
 } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
-import { IoGiftSharp } from 'react-icons/io5';
+import { GiTeacher } from "react-icons/gi";
 
 // Validation schema for coupons
 export const CouponSchema = Yup.object().shape({
@@ -28,20 +28,20 @@ export const sidebarItems = [
   },
   {
     id: 2,
-    label: 'User List',
+    label: 'Student List',
     parent_id: null,
     icon: <FaUser size={20} />,
-    module: 'user',
+    module: 'student',
     order_index: 2,
-    url: '/admin/user-list',
+    url: '/admin/student-list',
   },
   {
     id: 3,
-    label: 'Coupon',
+    label: 'Trainee List',
     parent_id: null,
-    icon: <IoGiftSharp size={20} />,
+    icon: <GiTeacher size={20} />,
     module: 'coupon_code',
     order_index: 3,
-    url: '/admin/coupon',
+    url: '/admin/trainee-list',
   },
 ];
