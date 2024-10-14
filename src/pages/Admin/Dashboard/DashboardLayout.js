@@ -7,7 +7,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 export default function DashboardLayout() {
   return (
     <div>
-      <MainNav />
+      {/* <MainNav /> */}
       <Container fluid>
         <Row className="">
           <Col lg={2} xxl={2} xl={2} md={0} sm={0} className="p-0 m-0">

@@ -66,7 +66,7 @@ const ReactSidebar = ({ sidebarItems, onClick }) => {
           height: "100%",
         }}
       >
-        <div className="menu-title mt-5 mb-5" style={{ textAlign: 'center', marginBottom: '10px', color: "black", fontSize: "30px" }}>
+        <div className="menu-title mt-5 mb-2" style={{ textAlign: 'center', marginBottom: '10px', color: "black", fontSize: "30px" }}>
           YOGA
         </div>
         <div className="menu-container">

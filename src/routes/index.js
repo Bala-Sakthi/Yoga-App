@@ -106,7 +106,7 @@ export default function Router() {
     // },
 
     {
-      path: '/login',
+      path: '/',
       element: (
         <GuestGuard>
           <Login />

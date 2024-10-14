@@ -19,7 +19,7 @@ const MainNav = () => {
   const handleModelClose = () => setLogoutShow(false);
   const handleLogin = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
     window.location.reload();
   };
 
