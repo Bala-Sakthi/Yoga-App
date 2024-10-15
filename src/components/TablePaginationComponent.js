@@ -36,11 +36,10 @@ const BasicTable = (props) => {
         <Row>
           <Table
             className="justify-content-center align-items-center"
-            striped
             hover
             {...getTableProps()}
             responsive={true}
-            style={{ width: '100%', marginLeft: '25px' }}
+            style={{ width: '100%', marginLeft: '25px', backgroundColor: 'white' }}
           >
             <thead>
               {headerGroups.map((headerGroup, index) => (
@@ -55,14 +54,14 @@ const BasicTable = (props) => {
                         whiteSpace: 'nowrap',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        backgroundColor: '#d3d3d3', // Grey header background
+                        border: 'none', // Remove borders from headers
                       }}
                       onClick={(e) => {
-                        // Check if the click was not on the sort icon and if the column is not "ACTIONS"
                         if (
                           !e.target.classList.contains('fa-sort') &&
                           column.render('Header') !== 'ACTIONS'
                         ) {
-                          // Change sorting on a single tap
                           column.toggleSortBy(!column.isSortedDesc);
                         }
                       }}
@@ -103,14 +102,15 @@ const BasicTable = (props) => {
                               overflow: 'hidden',
                               whiteSpace: 'nowrap',
                               maxWidth: '20ch',
-                              backgroundColor: index <= props.count-1 ?"#cfd1d1":"",
+                              backgroundColor: 'white', // White row background
+                              border: 'none', // Remove borders from cells
                             }}
                           >
                             {isActionColumn
                               ? cell.render('Cell')
                               : cell.value
-                                ? cell.render('Cell')
-                                : '-'}
+                              ? cell.render('Cell')
+                              : '-'}
                           </td>
                         );
                       })}
@@ -129,72 +129,10 @@ const BasicTable = (props) => {
               )}
             </tbody>
           </Table>
-          {/* <Col
-            className={`${
-              page.length > 0 ? 'd-flex' : 'd-none'
-            } flex-row justify-content-center align-items-center`}
-          >
-            <Col className="d-flex justify-content-start align-items-center flex-wrap">
-              <span className="m-1">
-                Showing{''}
-                <strong className="m-2">
-                  {props.startIndex} to {props.endIndex} of{' '}
-                  <strong className="m-2"> {props.totalItems} entries</strong>
-                </strong>
-              </span>
-            </Col>
-            <Col className=" mt-3 d-none d-sm-none d-md-none d-xxl-flex d-xl-flex d-lg-flex justify-content-end align-items-center">
-              <ReactPaginate
-                breakLabel="..."
-                onPageChange={(selectedPage) =>
-                  props.setCurrentPage(selectedPage.selected + 1)
-                }
-                pageRangeDisplayed={5}
-                pageCount={props.totalPages}
-                renderOnZeroPageCount={null}
-                activeClassName={'active'}
-                pageClassName={'page-item'}
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                containerClassName="pagination"
-                previousLabel={
-                  <IconContext.Provider value={{ color: color, size: '28px' }}>
-                    <AiFillLeftCircle />
-                  </IconContext.Provider>
-                }
-                nextLabel={
-                  <IconContext.Provider value={{ color: color, size: '28px' }}>
-                    <AiFillRightCircle />
-                  </IconContext.Provider>
-                }
-              />
-            </Col>
-            <Col className="d-flex d-sm-flex d-md-flex d-xxl-none d-xl-none d-lg-none justify-content-end align-items-center">
-              <Button
-                style={{ backgroundColor: color, border: 'none' }}
-                onClick={() => props.setCurrentPage(props.currentPage - 1)}
-                disabled={props.currentPage === 1}
-                className="m-2"
-              >
-                <BiLeftArrow size={14} />
-              </Button>
-              <Button
-                style={{ backgroundColor: color, border: 'none' }}
-                onClick={() => {
-                  props.setCurrentPage(props.currentPage + 1);
-                }}
-                disabled={props.currentPage === props.totalPages}
-              >
-                <BiRightArrow size={14} />
-              </Button>
-            </Col>
-          </Col> */}
         </Row>
       </Container>
     </div>
   );
 };
+
 export default BasicTable;
