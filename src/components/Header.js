@@ -41,7 +41,7 @@ const Header = (props) => {
           >
             <BsThreeDotsVertical
               size={25}
-              style={{ cursor: 'pointer', color: 'white' }}
+              style={{ cursor: 'pointer', color: 'black' }}
             />
           </Dropdown.Toggle>
 
