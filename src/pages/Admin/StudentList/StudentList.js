@@ -3,12 +3,14 @@ import { BsSearch } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi'; // Import FiDownload
 import { IconContext } from 'react-icons';
 import ReactPaginate from 'react-paginate';
-import { MdKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from 'react-icons/md';
+import { MdDelete, MdKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import Header from '../../../components/Header';
-import { FaFilter } from 'react-icons/fa';
+import { FaEdit, FaFilter } from 'react-icons/fa';
 import BasicTable from '../../../components/TablePaginationComponent';
 import { useGetStudentListQuery } from '../../../redux/api/StudentListApi';
 import { useEffect, useState } from 'react';
+import { FaRegTrashCan } from "react-icons/fa6";
+import { LuPencil } from "react-icons/lu";
 
 const StudentList = (props) => {
 
@@ -57,6 +59,20 @@ const StudentList = (props) => {
         return value && value.length > 0 ? value[0].address : '';
       },
     },
+
+    {
+      Header: 'ACTIONS',
+      accessor: 'action',
+      Cell: () => {
+        return (
+          <div className="d-flex align-items-center justify-content-center flex-row">
+            <LuPencil style={{ marginRight: '10px', fontSize: '20px' }} />
+            <FaRegTrashCan style={{ fontSize: '20px' }} />
+          </div>
+        );
+      },
+    }
+    
 
    
   ];
