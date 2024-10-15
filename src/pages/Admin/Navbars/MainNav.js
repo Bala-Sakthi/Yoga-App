@@ -139,7 +139,7 @@ const MainNav = () => {
                 className="rounded-circle p-2"
                 alt="..."
               />
-              Meet In Ground
+              YOGA APP
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body style={{ backgroundColor: " #FFFFFF" }}>

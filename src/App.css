@@ -1345,3 +1345,21 @@ button.close {
 }
 
 
+/* pagination styles */
+.pagination-arrows {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.arrow-item {
+  margin: 0 5px;
+}
+
+.arrow-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+}

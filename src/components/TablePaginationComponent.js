@@ -129,7 +129,7 @@ const BasicTable = (props) => {
               )}
             </tbody>
           </Table>
-          <Col
+          {/* <Col
             className={`${
               page.length > 0 ? 'd-flex' : 'd-none'
             } flex-row justify-content-center align-items-center`}
@@ -191,7 +191,7 @@ const BasicTable = (props) => {
                 <BiRightArrow size={14} />
               </Button>
             </Col>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </div>
