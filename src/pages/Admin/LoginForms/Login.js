@@ -159,7 +159,7 @@ const Login = () => {
                           aria-label="Email/Phone Number"
                         />
                         {touched.userName && errors.userName ? (
-                          <p className="color-white">{errors.userName}</p>
+                          <p className="login-validation">{errors.userName}</p>
                         ) : null}
                       </Col>
                     </Row>
@@ -206,7 +206,7 @@ const Login = () => {
                       </Row>
                     </Row>
                     {touched.password && errors.password ? (
-                      <p className="color-white">{errors.password}</p>
+                      <p className="login-validation">{errors.password}</p>
                     ) : null}
 
                     <BasicButton
