@@ -9,7 +9,7 @@ import ReactPaginate from 'react-paginate';
 
 const UserListToolbar = ({
 
-    searchPlaceholder = "Search UserList...",
+    searchPlaceholder = "Search Here...",
     onSearchChange,
     currentPage,
     totalPages,
@@ -40,14 +40,14 @@ const UserListToolbar = ({
       <Col className="d-flex justify-content-end align-items-center mt-2">
      
             <Col className="d-flex justify-content-end align-items-end flex-wrap">
-            <span>
-          <strong>
+            <span >
+          <strong >
             {startIndex} to {endIndex} of {totalItems}
           </strong>
         </span>
 
             </Col>
-        <Col className="d-flex justify-content-center align-items-center mt-3">
+        <Col className="d-flex justify-content-center align-items-center mt-3" >
             {/* <div>
         <span>
           <strong>

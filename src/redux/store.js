@@ -3,6 +3,7 @@ import UserReducer from './features/userSlice';
 import { AuthApi } from './api/AuthApi';
 import { StudentListApi } from './api/StudentListApi';
 import { TraineeListApi } from './api/TraineeListApi';
+import { ContactUsApi } from './api/ContactUsApi';
 
 
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     [AuthApi.reducerPath]: AuthApi.reducer,
     [StudentListApi.reducerPath]:StudentListApi.reducer,
     [TraineeListApi.reducerPath]:TraineeListApi.reducer,
+    [ContactUsApi.reducerPath]:ContactUsApi.reducer,
 
   },
   devTools: process.env.NODE_ENV === 'development',
@@ -21,6 +23,7 @@ export const store = configureStore({
       AuthApi.middleware,
       StudentListApi.middleware,
       TraineeListApi.middleware,
+      ContactUsApi.middleware,
 
 
 

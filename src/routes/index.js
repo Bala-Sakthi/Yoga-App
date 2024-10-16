@@ -147,10 +147,18 @@ export default function Router() {
           ),
         },
         {
-          path: '/admin/trainee-list',
+          path: '/admin/trainer-list',
           element: (
             <AuthGuard>
               <TraineeList />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: '/admin/contact-us',
+          element: (
+            <AuthGuard>
+              <ContactUs />
             </AuthGuard>
           ),
         },
@@ -186,5 +194,11 @@ const StudentList = Loadable(
 const TraineeList = Loadable(
   lazy(() => import('../pages/Admin/TraineeList/TraineeList'))
 );
+
+
+const ContactUs = Loadable(
+  lazy(() => import('../pages/Admin/ContactUs/ContactUs'))
+);
+
 
 

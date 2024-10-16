@@ -1,13 +1,13 @@
-import {Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Header from "../../../components/Header";
 import BasicTable from "../../../components/TablePaginationComponent";
-import { useGetTraineeListQuery } from "../../../redux/api/TraineeListApi";
+import { useGetContactUsQuery } from "../../../redux/api/ContactUsApi";
 import { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
 import UserListToolbar from "../../../components/ToolBarComponent";
 
-const TraineeList = (props) => {
+const ContactUs = (props) => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,21 +16,19 @@ const TraineeList = (props) => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItem] = useState();
 
-  const { data: TraineeListData } = useGetTraineeListQuery({
-    page: currentPage,
-  });
+  const { data: ContactUsData } = useGetContactUsQuery();
 
-  console.log(TraineeListData);
+  console.log(ContactUsData);
   useEffect(() => {
-    if (TraineeListData && TraineeListData.data) {
-      setData(TraineeListData.data);
-      setStartIndex(TraineeListData.pagination.startIndex);
+    if (ContactUsData && ContactUsData.data) {
+      setData(ContactUsData.data);
+      setStartIndex(ContactUsData.pagination.startIndex);
       setCurrentPage(currentPage);
-      setTotalItem(TraineeListData.pagination.totalItems);
-      setEndIndex(TraineeListData.pagination.endIndex);
-      setTotalPages(TraineeListData.pagination.totalPages);
+      setTotalItem(ContactUsData.pagination.totalItems);
+      setEndIndex(ContactUsData.pagination.endIndex);
+      setTotalPages(ContactUsData.pagination.totalPages);
     }
-  }, [TraineeListData,currentPage]);
+  }, [ContactUsData,currentPage]);
 
 
 
@@ -79,18 +77,26 @@ const TraineeList = (props) => {
       accessor: "typeOfUser",
     },
     {
-      Header: "Language",
-      accessor: "language",
+      Header: "Subject",
+      accessor: "subject",
     },
-
     {
-        Header: "Created At",
-        accessor: "createdAt",
-      }, {
-        Header: "Updated At",
-        accessor: "updatedAt",
+        Header: "Message",
+        accessor: "message",
+      },{
+        Header: "Status",
+        accessor: "status",
+      },{
+        Header: "Admin Comments",
+        accessor: "adminComments",
       },
-
+    {
+      Header: "Created At",
+      accessor: "createdAt",
+    }, {
+      Header: "Updated At",
+      accessor: "updatedAt",
+    },
     {
       Header: "ACTIONS",
       accessor: "action",
@@ -108,10 +114,10 @@ const TraineeList = (props) => {
   return (
     <div>
       <Container fluid className="mt-3 reduced-width-row">
-        <Header HEADING={"Student List"} />
+        <Header HEADING={"Contact Us"} />
         <div>
         <UserListToolbar
-        searchPlaceholder="Search TrainerList..."
+        searchPlaceholder="Search ContactUs..."
         onSearchChange={handleSearchChange}
         onPageChange={handlePageChange}
         onFilterClick={handleFilterClick}
@@ -135,4 +141,4 @@ const TraineeList = (props) => {
   );
 };
 
-export default TraineeList;
+export default ContactUs;

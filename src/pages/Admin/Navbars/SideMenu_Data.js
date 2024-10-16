@@ -37,12 +37,12 @@ export const sidebarItems = [
   },
   {
     id: 3,
-    label: 'Trainee List',
+    label: 'Trainer List',
     parent_id: null,
     icon: <GiTeacher size={20} />,
     module: 'coupon_code',
     order_index: 3,
-    url: '/admin/trainee-list',
+    url: '/admin/trainer-list',
   },
   {
     id: 4,
@@ -51,6 +51,6 @@ export const sidebarItems = [
     icon: <FaHeadphones  size={20} />,
     module: 'coupon_code',
     order_index: 4,
-    url: '/admin/contact-ua',
+    url: '/admin/contact-us',
   },
 ];

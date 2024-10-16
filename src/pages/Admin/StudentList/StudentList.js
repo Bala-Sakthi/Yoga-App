@@ -107,7 +107,7 @@ const StudentList = (props) => {
         <Header HEADING={"Student List"} />
         <div>
         <UserListToolbar
-        searchPlaceholder="Search UserList..."
+        searchPlaceholder="Search StudentList..."
         onSearchChange={handleSearchChange}
         onPageChange={handlePageChange}
         onFilterClick={handleFilterClick}
