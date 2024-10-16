@@ -146,6 +146,14 @@ export default function Router() {
             </AuthGuard>
           ),
         },
+        {
+          path: '/admin/trainee-list',
+          element: (
+            <AuthGuard>
+              <TraineeList />
+            </AuthGuard>
+          ),
+        },
       ],
     },
     {
@@ -173,6 +181,10 @@ const Dashboard = Loadable(
 
 const StudentList = Loadable(
   lazy(() => import('../pages/Admin/StudentList/StudentList'))
+);
+
+const TraineeList = Loadable(
+  lazy(() => import('../pages/Admin/TraineeList/TraineeList'))
 );
 
 

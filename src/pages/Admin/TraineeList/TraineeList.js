@@ -1,13 +1,13 @@
-import { Container, Row } from "react-bootstrap";
+import {Container, Row } from "react-bootstrap";
 import Header from "../../../components/Header";
 import BasicTable from "../../../components/TablePaginationComponent";
-import { useGetStudentListQuery } from "../../../redux/api/StudentListApi";
+import { useGetTraineeListQuery } from "../../../redux/api/TraineeListApi";
 import { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
 import UserListToolbar from "../../../components/ToolBarComponent";
 
-const StudentList = (props) => {
+const TraineeList = (props) => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,19 +16,19 @@ const StudentList = (props) => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItem] = useState();
 
-  const { data: StudentListData } = useGetStudentListQuery();
+  const { data: TraineeListData } = useGetTraineeListQuery();
 
-  console.log(StudentListData);
+  console.log(TraineeListData);
   useEffect(() => {
-    if (StudentListData && StudentListData.data) {
-      setData(StudentListData.data);
-      setStartIndex(StudentListData.pagination.startIndex);
+    if (TraineeListData && TraineeListData.data) {
+      setData(TraineeListData.data);
+      setStartIndex(TraineeListData.pagination.startIndex);
       setCurrentPage(currentPage);
-      setTotalItem(StudentListData.pagination.totalItems);
-      setEndIndex(StudentListData.pagination.endIndex);
-      setTotalPages(StudentListData.pagination.totalPages);
+      setTotalItem(TraineeListData.pagination.totalItems);
+      setEndIndex(TraineeListData.pagination.endIndex);
+      setTotalPages(TraineeListData.pagination.totalPages);
     }
-  }, [StudentListData,currentPage]);
+  }, [TraineeListData,currentPage]);
 
 
 
@@ -80,13 +80,15 @@ const StudentList = (props) => {
       Header: "Language",
       accessor: "language",
     },
+
     {
-      Header: "Created At",
-      accessor: "createdAt",
-    }, {
-      Header: "Updated At",
-      accessor: "updatedAt",
-    },
+        Header: "Created At",
+        accessor: "createdAt",
+      }, {
+        Header: "Updated At",
+        accessor: "updatedAt",
+      },
+
     {
       Header: "ACTIONS",
       accessor: "action",
@@ -131,4 +133,4 @@ const StudentList = (props) => {
   );
 };
 
-export default StudentList;
+export default TraineeList;

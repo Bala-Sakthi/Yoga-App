@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import {
   MdAdminPanelSettings,
 } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
+import { FaHeadphones, FaUser } from 'react-icons/fa';
 import { GiTeacher } from "react-icons/gi";
 
 // Validation schema for coupons
@@ -43,5 +43,14 @@ export const sidebarItems = [
     module: 'coupon_code',
     order_index: 3,
     url: '/admin/trainee-list',
+  },
+  {
+    id: 4,
+    label: 'Contact Us',
+    parent_id: null,
+    icon: <FaHeadphones  size={20} />,
+    module: 'coupon_code',
+    order_index: 4,
+    url: '/admin/contact-ua',
   },
 ];

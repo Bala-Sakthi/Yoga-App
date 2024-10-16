@@ -33,48 +33,48 @@ export const AuthApi = createApi({
       }),
       invalidatesTags: ['AuthApi'],
     }),
-    verifyOTP: builder.mutation({
-      query: (data) => ({
-        url: '/user/verifyOtp',
-        method: 'POST',
-        body: data,
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      }),
-      invalidatesTags: ['AuthApi'],
-    }),
-    createAccount: builder.mutation({
-      query: (data) => ({
-        url: '/user/signUp',
-        method: 'POST',
-        body: data,
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      }),
-      invalidatesTags: ['AuthApi'],
-    }),
-    getViewUserProfile: builder.query({
-      query: (phoneNumber) => ({
-        url: `/user/viewUserProfile/${phoneNumber}`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      }),
-      providesTags: ['AuthApi'],
-    }),
-    getViewMyQuotes: builder.query({
-      query: ({ phoneNumber, page }) => ({
-        url: `/user/viewMyQuotes/${phoneNumber}?page=${page}`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      }),
-      providesTags: ['AuthApi'],
-    }),
+    // verifyOTP: builder.mutation({
+    //   query: (data) => ({
+    //     url: '/user/verifyOtp',
+    //     method: 'POST',
+    //     body: data,
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //   }),
+    //   invalidatesTags: ['AuthApi'],
+    // }),
+    // createAccount: builder.mutation({
+    //   query: (data) => ({
+    //     url: '/user/signUp',
+    //     method: 'POST',
+    //     body: data,
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //   }),
+    //   invalidatesTags: ['AuthApi'],
+    // }),
+    // getViewUserProfile: builder.query({
+    //   query: (phoneNumber) => ({
+    //     url: `/user/viewUserProfile/${phoneNumber}`,
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //   }),
+    //   providesTags: ['AuthApi'],
+    // }),
+    // getViewMyQuotes: builder.query({
+    //   query: ({ phoneNumber, page }) => ({
+    //     url: `/user/viewMyQuotes/${phoneNumber}?page=${page}`,
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //   }),
+    //   providesTags: ['AuthApi'],
+    // }),
   }),
 });
 
