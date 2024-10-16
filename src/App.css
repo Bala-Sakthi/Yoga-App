@@ -1344,7 +1344,9 @@ button.close {
   color: white;
 }
 
-
+.login-validation{
+  color: #E74C3C;
+}
 /* pagination styles */
 .pagination-arrows {
   display: flex;
