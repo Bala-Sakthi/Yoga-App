@@ -7,8 +7,8 @@ export const TrainerVideosApi = createApi({
   tagTypes: ['TRAINERVIDEOS'],
   endpoints: (build) => ({
     getTrainerVideos: build.query({
-      query: ({phoneNumber}) => ({
-        url: `/admin/videosByTrainer/${phoneNumber}`,
+      query: ({phoneNumber,search,page}) => ({
+        url: `/admin/videosByTrainer/${phoneNumber}/${search}?page=${page}&limit=10`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',

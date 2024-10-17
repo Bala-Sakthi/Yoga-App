@@ -16,7 +16,10 @@ const ContactUs = (props) => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItem] = useState();
 
-  const { data: ContactUsData } = useGetContactUsQuery();
+  const { data: ContactUsData } = useGetContactUsQuery({
+    page:currentPage,
+    search:searchQuery,
+  });
 
   console.log(ContactUsData);
   useEffect(() => {
