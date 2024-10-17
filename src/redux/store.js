@@ -4,6 +4,7 @@ import { AuthApi } from './api/AuthApi';
 import { StudentListApi } from './api/StudentListApi';
 import { TraineeListApi } from './api/TraineeListApi';
 import { ContactUsApi } from './api/ContactUsApi';
+import { TrainerVideosApi } from './api/TrainerVideosApi';
 
 
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     [StudentListApi.reducerPath]:StudentListApi.reducer,
     [TraineeListApi.reducerPath]:TraineeListApi.reducer,
     [ContactUsApi.reducerPath]:ContactUsApi.reducer,
+    [TrainerVideosApi.reducerPath]:TrainerVideosApi.reducer,
 
   },
   devTools: process.env.NODE_ENV === 'development',
@@ -24,6 +26,7 @@ export const store = configureStore({
       StudentListApi.middleware,
       TraineeListApi.middleware,
       ContactUsApi.middleware,
+      TrainerVideosApi.middleware,
 
 
 

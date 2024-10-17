@@ -162,6 +162,14 @@ export default function Router() {
             </AuthGuard>
           ),
         },
+        {
+          path: '/admin/trainer-videos/:phoneNumber',
+          element: (
+            <AuthGuard>
+              <TrainerVideos />
+            </AuthGuard>
+          ),
+        },
       ],
     },
     {
@@ -200,5 +208,9 @@ const ContactUs = Loadable(
   lazy(() => import('../pages/Admin/ContactUs/ContactUs'))
 );
 
+
+const TrainerVideos = Loadable(
+  lazy(() => import('../pages/Admin/TrainerVideos/TrainerVideos'))
+);
 
 
