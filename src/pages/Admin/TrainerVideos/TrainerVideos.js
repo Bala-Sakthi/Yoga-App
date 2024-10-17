@@ -1,39 +1,46 @@
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "../../../components/Header";
 import BasicTable from "../../../components/TablePaginationComponent";
-import { useGetStudentListQuery } from "../../../redux/api/StudentListApi";
+import { useGetTrainerVideosQuery } from "../../../redux/api/TrainerVideosApi";
 import { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
 import UserListToolbar from "../../../components/ToolBar";
+import { useNavigate, useParams } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
-const StudentList = (props) => {
+const TrainerVideos = (props) => {
   const [data, setData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [startIndex, setStartIndex] = useState(1);
   const [endIndex, setEndIndex] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItem] = useState();
+  const { phoneNumber } = useParams();
 
-  const { data: StudentListData } = useGetStudentListQuery({
-    page:currentPage,
-    search:searchQuery,
+  const { data: TrainerVideosData } = useGetTrainerVideosQuery({
+    page: currentPage,
+    search: searchQuery,
+    phoneNumber: phoneNumber,
   });
+  const navigate = useNavigate();
+  const handleCancel = () => {
+    navigate('/admin/trainer-list');
+  };
 
-  console.log(StudentListData);
+
+  console.log(TrainerVideosData);
   useEffect(() => {
-    if (StudentListData && StudentListData.data) {
-      setData(StudentListData.data);
-      setStartIndex(StudentListData.pagination.startIndex);
+    if (TrainerVideosData && TrainerVideosData.data) {
+      setData(TrainerVideosData.data);
+      setStartIndex(TrainerVideosData.pagination.startIndex);
       setCurrentPage(currentPage);
-      setTotalItem(StudentListData.pagination.totalItems);
-      setEndIndex(StudentListData.pagination.endIndex);
-      setTotalPages(StudentListData.pagination.totalPages);
+      setTotalItem(TrainerVideosData.pagination.totalItems);
+      setEndIndex(TrainerVideosData.pagination.endIndex);
+      setTotalPages(TrainerVideosData.pagination.totalPages);
     }
-  }, [StudentListData,currentPage]);
-
-
+  }, [TrainerVideosData, currentPage]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -44,18 +51,16 @@ const StudentList = (props) => {
   };
 
   const handleFilterClick = () => {
-    console.log('Filter clicked');
+    console.log("Filter clicked");
   };
 
   const handleDownloadClick = () => {
-    console.log('Download clicked');
+    console.log("Download clicked");
   };
 
   const handleAddClick = () => {
-    console.log('Add clicked');
+    console.log("Add clicked");
   };
-
-
 
   const COLUMNS = [
     {
@@ -86,7 +91,8 @@ const StudentList = (props) => {
     {
       Header: "Created At",
       accessor: "createdAt",
-    }, {
+    },
+    {
       Header: "Updated At",
       accessor: "updatedAt",
     },
@@ -107,31 +113,35 @@ const StudentList = (props) => {
   return (
     <div>
       <Container fluid className="mt-3 reduced-width-row">
-        <Header HEADING={"Student List"} />
+        <Col className="d-flex justify-content-start mb-3 mt-3">
+          <h4 onClick={handleCancel} style={{ marginTop: "30px" }}>
+            <AiOutlineArrowLeft />
+          </h4>
+          <Header HEADING={"Videos Uploaded By Trainer Name"} />
+        </Col>
         <div>
-        <UserListToolbar
-        searchPlaceholder="Search StudentList..."
-        onSearchChange={handleSearchChange}
-        onPageChange={handlePageChange}
-        onFilterClick={handleFilterClick}
-        onDownloadClick={handleDownloadClick}
-        onSortClick={handleAddClick}
-        currentPage={currentPage}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        setCurrentPage={setCurrentPage}
-        totalItems={totalItems}
-        totalPages={totalPages}
-      />
-      </div>
+          <UserListToolbar
+            searchPlaceholder="Search TrainerVideos..."
+            onSearchChange={handleSearchChange}
+            onPageChange={handlePageChange}
+            onFilterClick={handleFilterClick}
+            onDownloadClick={handleDownloadClick}
+            onSortClick={handleAddClick}
+            currentPage={currentPage}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            setCurrentPage={setCurrentPage}
+            totalItems={totalItems}
+            totalPages={totalPages}
+          />
+        </div>
 
         <Row className="boxShadow p-4 mb-4 ">
           <BasicTable COLUMNS={COLUMNS} MOCK_DATA={data} />
         </Row>
-
-              </Container>
+      </Container>
     </div>
   );
 };
 
-export default StudentList;
+export default TrainerVideos;

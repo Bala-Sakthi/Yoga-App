@@ -7,8 +7,8 @@ export const TraineeListApi = createApi({
   tagTypes: ['TRAINEELIST'],
   endpoints: (build) => ({
     getTraineeList: build.query({
-      query: () => ({
-        url: `/admin/viewTrainers`,
+      query: ({search,page,sortOrder}) => ({
+        url: `/admin/viewTrainers/${search}?page=${page}&sortOrder=${sortOrder}&limit=10`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -17,9 +17,20 @@ export const TraineeListApi = createApi({
       providesTags: ['TRAINEELIST'],
     }),
 
+    editTrainerList: build.mutation({
+        query: ({ id,data }) => {
+           return {
+            url: `/admin/updateTrainer/${id}`,
+            method: "PATCH",
+            body: data,
+          };
+        },
+        invalidatesTags: ["TRAINEELIST"],
+      }),
+
     deleteTraineeList: build.mutation({
-      query: ({ id, role }) => ({
-        url: `/admin/deleteUser/${id}/${role}`,
+      query: ({id}) => ({
+        url: `/admin/deleteTrainer/${id}`,
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -30,4 +41,4 @@ export const TraineeListApi = createApi({
   }),
 });
 
-export const { useGetTraineeListQuery, useDeleteTraineeListMutation } = TraineeListApi;
+export const { useGetTraineeListQuery, useDeleteTraineeListMutation ,useEditTrainerListMutation} = TraineeListApi;

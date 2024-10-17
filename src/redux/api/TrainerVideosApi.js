@@ -1,24 +1,24 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import customFetchBase from './CustomFetchBase';
 
-export const StudentListApi = createApi({
-  reducerPath: 'StudentListApi',
+export const TrainerVideosApi = createApi({
+  reducerPath: 'TrainerVideosApi',
   baseQuery: customFetchBase,
-  tagTypes: ['STUDENTLIST'],
+  tagTypes: ['TRAINERVIDEOS'],
   endpoints: (build) => ({
-    getStudentList: build.query({
-      query: ({search,page,sortOrder}) => ({
-        url: `/admin/viewStudents/${search}?page=${page}&sortOrder=${sortOrder}`,
+    getTrainerVideos: build.query({
+      query: ({phoneNumber}) => ({
+        url: `/admin/videosByTrainer/${phoneNumber}`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       }),
-      providesTags: ['STUDENTLIST'],
+      providesTags: ['TRAINERVIDEOS'],
     }),
 
     
-    deleteStudentList: build.mutation({
+    deleteTrainerVideos: build.mutation({
       query: ({ id, role }) => ({
         url: `/admin/deleteUser/${id}/${role}`,
         method: 'DELETE',
@@ -26,9 +26,9 @@ export const StudentListApi = createApi({
           'Content-Type': 'application/json; charset=UTF-8',
         },
       }),
-      invalidatesTags: ['STUDENTLIST'],
+      invalidatesTags: ['TRAINERVIDEOS'],
     }),
   }),
 });
 
-export const { useGetStudentListQuery, useDeleteStudentListMutation } = StudentListApi;
+export const { useGetTrainerVideosQuery, useDeleteTrainerVideosMutation } = TrainerVideosApi;
