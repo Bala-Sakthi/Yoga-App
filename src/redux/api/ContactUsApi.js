@@ -7,8 +7,8 @@ export const ContactUsApi = createApi({
   tagTypes: ['CONTACTUS'],
   endpoints: (build) => ({
     getContactUs: build.query({
-      query: () => ({
-        url: `/admin/viewContactUsRequests?limit=2&page=3`,
+      query: ({search,page,sortOrder}) => ({
+        url: `/admin/viewContactUsRequests/${search}?page=${page}&sortOrder=${sortOrder}`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',

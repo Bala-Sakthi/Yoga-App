@@ -69,25 +69,55 @@ const TrainerVideos = (props) => {
     },
 
     {
-      Header: "Name",
-      accessor: "name",
+        Header: "Video",
+        accessor: "video", 
+        Cell: ({ row }) => {
+          const videoUrl = row.original.video; 
+          return (
+            <video width="100" height="60" controls>
+              <source src={videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          );
+        },
+      },
+    {
+        Header: "Title",
+        accessor: "title",
+      },
+    {
+      Header: "Uploader Name",
+      accessor: "uploaderName",
     },
     {
-      Header: "Phone Number",
-      accessor: "phoneNumber",
+      Header: "Uploaded By",
+      accessor: "uploadedBy",
     },
     {
-      Header: "Email",
-      accessor: "email",
+      Header: "Views",
+      accessor: "views",
     },
     {
-      Header: "Type Of User",
-      accessor: "typeOfUser",
+      Header: "Type Of Video",
+      accessor: "typeOfVideo",
     },
+
     {
-      Header: "Language",
-      accessor: "language",
-    },
+        Header: "Description",
+        accessor: "description",
+      },
+      {
+        Header: "Duration",
+        accessor: "duration",
+      },
+      {
+        Header: "Price",
+        accessor: "price",
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+      },
     {
       Header: "Created At",
       accessor: "createdAt",
@@ -114,7 +144,7 @@ const TrainerVideos = (props) => {
     <div>
       <Container fluid className="mt-3 reduced-width-row">
         <Col className="d-flex justify-content-start mb-3 mt-3">
-          <h4 onClick={handleCancel} style={{ marginTop: "30px" }}>
+          <h4 onClick={handleCancel} style={{ marginTop: "34px" }}>
             <AiOutlineArrowLeft />
           </h4>
           <Header HEADING={"Videos Uploaded By Trainer Name"} />
