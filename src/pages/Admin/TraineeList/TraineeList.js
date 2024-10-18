@@ -20,7 +20,7 @@ const TraineeList = (props) => {
   const [totalItems, setTotalItem] = useState();
   const [editId, setEditId] = useState(null);
   const [editShow, setEditShow] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState("");
   const [deleteShow, setDeleteShow] = useState(false);
   const [idToDelete, setIdToDelete] = useState("");
   const [loading, setLoading] = useState(false);
@@ -64,6 +64,11 @@ const TraineeList = (props) => {
   const handleAddClick = () => {
     console.log("Add clicked");
   };
+
+  const handleCloseClick = () => {
+    setSearchQuery('');  
+  };
+
 
   const handleEditShow = (id) => {
     const editStatus = data.find((d) => d._id === id);
@@ -218,15 +223,16 @@ const TraineeList = (props) => {
         <div>
           <UserListToolbar
             searchPlaceholder="Search TrainerList..."
-            onSearchChange={handleSearchChange}
+            onSearchChange={handleSearchChange} 
             onPageChange={handlePageChange}
             onFilterClick={handleFilterClick}
             onDownloadClick={handleDownloadClick}
             onSortClick={handleAddClick}
+            onCloseClick={handleCloseClick}  
+            searchQuery={searchQuery}  
             currentPage={currentPage}
             startIndex={startIndex}
             endIndex={endIndex}
-            setCurrentPage={setCurrentPage}
             totalItems={totalItems}
             totalPages={totalPages}
           />
@@ -239,8 +245,8 @@ const TraineeList = (props) => {
           YES={handleDeleteDevices}
           DELETESTATE={deleteShow}
           ONCLICK={deleteHandleClose}
-          DESCRIPTION="Are you sure want to delete this Devices"
-          DELETETITLE="Devices"
+          DESCRIPTION="Are you sure want to delete this Trainer List"
+          DELETETITLE="Trainer List"
         />
       </Container>
       <Modal

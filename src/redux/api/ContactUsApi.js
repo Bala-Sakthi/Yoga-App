@@ -17,9 +17,20 @@ export const ContactUsApi = createApi({
       providesTags: ['CONTACTUS'],
     }),
 
+    editContactUs: build.mutation({
+      query: ({ id,data }) => {
+         return {
+          url: `/admin/updateContactUsRequest/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      invalidatesTags: ["CONTACTUS"],
+    }),
+
     deleteContactUs: build.mutation({
-      query: ({ id, role }) => ({
-        url: `/admin/deleteUser/${id}/${role}`,
+      query: ({ id }) => ({
+        url: `/admin/deleteContactUsRequest/${id}`,
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -30,4 +41,4 @@ export const ContactUsApi = createApi({
   }),
 });
 
-export const { useGetContactUsQuery, useDeleteContactUsMutation } = ContactUsApi;
+export const { useGetContactUsQuery, useDeleteContactUsMutation,useEditContactUsMutation } = ContactUsApi;
