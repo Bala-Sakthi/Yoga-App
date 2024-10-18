@@ -17,11 +17,10 @@ const StudentList = (props) => {
   const [totalItems, setTotalItem] = useState();
 
   const { data: StudentListData } = useGetStudentListQuery({
-    page:currentPage,
-    search:searchQuery,
+    page: currentPage,
+    search: searchQuery,
   });
 
-  console.log(StudentListData);
   useEffect(() => {
     if (StudentListData && StudentListData.data) {
       setData(StudentListData.data);
@@ -31,12 +30,10 @@ const StudentList = (props) => {
       setEndIndex(StudentListData.pagination.endIndex);
       setTotalPages(StudentListData.pagination.totalPages);
     }
-  }, [StudentListData,currentPage]);
+  }, [StudentListData, currentPage]);
 
-
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+  const handleSearchChange = (value) => {
+    setSearchQuery(value);
   };
 
   const handlePageChange = (page) => {
@@ -55,14 +52,15 @@ const StudentList = (props) => {
     console.log('Add clicked');
   };
 
-
+  const handleCloseClick = () => {
+    setSearchQuery('');  
+  };
 
   const COLUMNS = [
     {
       Header: "ID",
       accessor: "s_no",
     },
-
     {
       Header: "Name",
       accessor: "name",
@@ -86,22 +84,11 @@ const StudentList = (props) => {
     {
       Header: "Created At",
       accessor: "createdAt",
-    }, {
+    }, 
+    {
       Header: "Updated At",
       accessor: "updatedAt",
     },
-    // {
-    //   Header: "ACTIONS",
-    //   accessor: "action",
-    //   Cell: () => {
-    //     return (
-    //       <div className="d-flex align-items-center justify-content-center flex-row">
-    //         <LuPencil style={{ marginRight: "10px", fontSize: "20px" }} />
-    //         <FaRegTrashCan style={{ fontSize: "20px" }} />
-    //       </div>
-    //     );
-    //   },
-    // },
   ];
 
   return (
@@ -109,27 +96,27 @@ const StudentList = (props) => {
       <Container fluid className="mt-3 reduced-width-row">
         <Header HEADING={"Student List"} />
         <div>
-        <UserListToolbar
-        searchPlaceholder="Search StudentList..."
-        onSearchChange={handleSearchChange}
-        onPageChange={handlePageChange}
-        onFilterClick={handleFilterClick}
-        onDownloadClick={handleDownloadClick}
-        onSortClick={handleAddClick}
-        currentPage={currentPage}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        setCurrentPage={setCurrentPage}
-        totalItems={totalItems}
-        totalPages={totalPages}
-      />
-      </div>
+          <UserListToolbar
+            searchPlaceholder="Search StudentList..."
+            onSearchChange={handleSearchChange} 
+            onPageChange={handlePageChange}
+            onFilterClick={handleFilterClick}
+            onDownloadClick={handleDownloadClick}
+            onSortClick={handleAddClick}
+            onCloseClick={handleCloseClick}  
+            searchQuery={searchQuery}  
+            currentPage={currentPage}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            totalItems={totalItems}
+            totalPages={totalPages}
+          />
+        </div>
 
         <Row className="boxShadow p-4 mb-4 ">
           <BasicTable COLUMNS={COLUMNS} MOCK_DATA={data} />
         </Row>
-
-              </Container>
+      </Container>
     </div>
   );
 };
