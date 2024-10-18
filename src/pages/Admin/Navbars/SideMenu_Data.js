@@ -2,8 +2,10 @@ import * as Yup from 'yup';
 import {
   MdAdminPanelSettings,
 } from 'react-icons/md';
-import { FaHeadphones, FaUser } from 'react-icons/fa';
+import { FaHeadphones, FaStar, FaUser } from 'react-icons/fa';
 import { GiTeacher } from "react-icons/gi";
+import { BiSolidCategory } from 'react-icons/bi';
+import { SiLevelsdotfyi } from "react-icons/si";
 
 // Validation schema for coupons
 export const CouponSchema = Yup.object().shape({
@@ -52,5 +54,42 @@ export const sidebarItems = [
     module: 'coupon_code',
     order_index: 4,
     url: '/admin/contact-us',
+  },
+  
+  {
+    id: 5,
+    label: 'Ratings',
+    parent_id: null,
+    icon: <FaStar   size={20} />,
+    module: 'coupon_code',
+    order_index: 5,
+    url: '/admin/ratings',
+  },
+  {
+    id: 5,
+    label: 'Plans',
+    parent_id: null,
+    icon: <FaStar   size={20} />,
+    module: 'coupon_code',
+    order_index: 5,
+    url: '/admin/plans',
+  },
+  {
+    id: 5,
+    label: 'Category',
+    parent_id: null,
+    icon: <BiSolidCategory    size={20} />,
+    module: 'coupon_code',
+    order_index: 5,
+    url: '/admin/category',
+  },
+  {
+    id: 5,
+    label: 'Level',
+    parent_id: null,
+    icon: <SiLevelsdotfyi     size={20} />,
+    module: 'coupon_code',
+    order_index: 5,
+    url: '/admin/level',
   },
 ];

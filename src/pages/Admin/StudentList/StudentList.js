@@ -3,8 +3,6 @@ import Header from "../../../components/Header";
 import BasicTable from "../../../components/TablePaginationComponent";
 import { useGetStudentListQuery } from "../../../redux/api/StudentListApi";
 import { useEffect, useState } from "react";
-import { FaRegTrashCan } from "react-icons/fa6";
-import { LuPencil } from "react-icons/lu";
 import UserListToolbar from "../../../components/ToolBar";
 
 const StudentList = (props) => {

@@ -3,8 +3,6 @@ import Header from "../../../components/Header";
 import BasicTable from "../../../components/TablePaginationComponent";
 import { useGetTrainerVideosQuery } from "../../../redux/api/TrainerVideosApi";
 import { useEffect, useState } from "react";
-import { FaRegTrashCan } from "react-icons/fa6";
-import { LuPencil } from "react-icons/lu";
 import UserListToolbar from "../../../components/ToolBar";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
