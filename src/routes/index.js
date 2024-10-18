@@ -170,6 +170,38 @@ export default function Router() {
             </AuthGuard>
           ),
         },
+        {
+          path: '/admin/ratings',
+          element: (
+            <AuthGuard>
+              <Ratings />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: '/admin/plans',
+          element: (
+            <AuthGuard>
+              <Plans />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: '/admin/category',
+          element: (
+            <AuthGuard>
+              <Category />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: '/admin/level/:category',
+          element: (
+            <AuthGuard>
+              <Level />
+            </AuthGuard>
+          ),
+        },
       ],
     },
     {
@@ -213,4 +245,20 @@ const TrainerVideos = Loadable(
   lazy(() => import('../pages/Admin/TrainerVideos/TrainerVideos'))
 );
 
+const Ratings = Loadable(
+  lazy(() => import('../pages/Admin/Ratings/Ratings'))
+);
+
+const Plans = Loadable(
+  lazy(() => import('../pages/Admin/Plans/Plans'))
+);
+
+const Category = Loadable(
+  lazy(() => import('../pages/Admin/Category/Category'))
+);
+
+
+const Level = Loadable(
+  lazy(() => import('../pages/Admin/Level/Level'))
+);
 
